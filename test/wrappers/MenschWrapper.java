@@ -12,7 +12,6 @@ public class MenschWrapper<T> extends ClassWrapper<T>
     private final AttributeWrapper<T, Object> grafikGruppe;
     private final AttributeWrapper<T, Object> meinHund;
 
-    private final MethodWrapper<T, Integer> mathRandomInt;
     private final MethodWrapper<T, ?> gassiGehen;
     private final MethodWrapper<T, ?> hundRufen;
     private final MethodWrapper<T, Double> getX;
@@ -46,14 +45,6 @@ public class MenschWrapper<T> extends ClassWrapper<T>
             "private"
         );
 
-        mathRandomInt = new MethodWrapper<>(
-            this,
-            "mathRandomInt",
-            int.class,
-            new Class<?>[] { int.class, int.class },
-            "public",
-            "static"
-        );
 
         gassiGehen = new MethodWrapper<>(
             this,
