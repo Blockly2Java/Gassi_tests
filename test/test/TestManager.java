@@ -12,36 +12,35 @@ import org.junit.jupiter.api.TestFactory;
 import levenshtein.LevenshteinTest;
 import static levenshtein.StructuralLevenshtein.DetailLevel.ONE_PER_MEMBER_CATEGORY;
 import static levenshtein.StructuralLevenshtein.structuralTestFactory;
+import wrappers.HundWrapper;
 import wrappers.MainWrapper;
+import wrappers.MenschWrapper;
 
 
 
 @LevenshteinTest
 public class TestManager {
 
-    static MainWrapper<?> mainClz;
-
-    public static MainWrapper<?> mainClz() {
-        return mainClz;
-    }
 
     @BeforeAll
     static void beforeAll() {
-        mainClz = new MainWrapper<>();
+        testCompilationAndSetup();
     }
 
-    void testCompilationAndSetup() {
-        assertThat(mainClz).isNotNull();
-        assertThat(mainClz).isInstanceOf(MainWrapper.class);
-
+    static void testCompilationAndSetup() {
+        assertThat(Tests.main).isNotNull();
+        assertThat(Tests.hund).isNotNull();
+        assertThat(Tests.mensch).isNotNull();
+        assertThat(Tests.main).isInstanceOf(MainWrapper.class);
+        assertThat(Tests.hund).isInstanceOf(HundWrapper.class);
+        assertThat(Tests.mensch).isInstanceOf(MenschWrapper.class);
     }
     
     @TestFactory
     List<DynamicTest> strukturTests() {
-        testCompilationAndSetup();
         return structuralTestFactory(
             ONE_PER_MEMBER_CATEGORY,
-            mainClz
+            Tests.main, Tests.hund, Tests.mensch
         );
     }
 
