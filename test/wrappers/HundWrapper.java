@@ -33,7 +33,7 @@ public class HundWrapper<T> extends ClassWrapper<T>
         group = new AttributeWrapper<>(
             this,
             "group",
-            Group.class,
+            resolveClass("Group"),
             "private"
         );
 
