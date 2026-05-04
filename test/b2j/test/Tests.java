@@ -1,9 +1,9 @@
 package b2j.test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import wrappers.HundWrapper;
-import wrappers.MainWrapper;
-import wrappers.MenschWrapper;
+import b2j.wrappers.HundWrapper;
+import b2j.wrappers.MainWrapper;
+import b2j.wrappers.MenschWrapper;
 public class Tests {
     static MainWrapper<?> main = new MainWrapper<>(); 
     static HundWrapper<?> hund = new HundWrapper<>();
