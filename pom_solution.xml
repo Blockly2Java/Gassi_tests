@@ -6,6 +6,13 @@
   <artifactId>TestsSolution</artifactId>
   <version>1.0</version>
   <name>Tests - Solution</name>
+  <repositories>
+  <repository>
+    <id>github</id>
+    <name>GitHub Packages</name>
+    <url>https://maven.pkg.github.com/ValentinHerrmann/Artemis-Testing-Patterns</url>
+  </repository>
+  </repositories>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <argLine>-Dfile.encoding=UTF-8</argLine>
@@ -52,6 +59,11 @@
     <artifactId>artemis-java-test-sandbox</artifactId>
     <version>1.15.0</version>
     <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>de.tum.cit.aet</groupId>
+    <artifactId>levenshtein-name-deviation-pattern</artifactId>
+    <version>[1.0.0,)</version>
   </dependency>
   </dependencies>
   <build>
