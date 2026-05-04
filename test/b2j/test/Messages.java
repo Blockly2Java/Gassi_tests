@@ -1,4 +1,4 @@
-package test;
+package b2j.test;
 
 /**
  * Central message catalog for all assertion and feedback messages shown to students.

@@ -1,4 +1,4 @@
-package test;
+package b2j.test;
 
 import java.util.List;
 
@@ -9,11 +9,8 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
-import de.tum.cit.aet.levenshtein.ClassWrapper;
-import static de.tum.cit.aet.levenshtein.StructuralLevenshtein.DetailLevel.ONE_PER_MEMBER_CATEGORY;
 import de.tum.cit.aet.levenshtein.LevenshteinTest;
 import de.tum.cit.aet.levenshtein.StructuralLevenshtein;
-import static de.tum.cit.aet.levenshtein.StructuralLevenshtein.structuralTestFactory;
 import wrappers.HundWrapper;
 import wrappers.MainWrapper;
 import wrappers.MenschWrapper;

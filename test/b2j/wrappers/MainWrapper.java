@@ -1,4 +1,4 @@
-package wrappers;
+package b2j.wrappers;
 
 import de.tum.cit.aet.levenshtein.ClassWrapper;
 import de.tum.cit.aet.levenshtein.MethodWrapper;

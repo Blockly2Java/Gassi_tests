@@ -1,4 +1,4 @@
-package test;
+package b2j.test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import wrappers.HundWrapper;
