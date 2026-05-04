@@ -1,9 +1,10 @@
 package wrappers;
 
-import levenshtein.AttributeWrapper;
-import levenshtein.ClassWrapper;
-import levenshtein.ConstructorWrapper;
-import levenshtein.MethodWrapper;
+import de.tum.cit.aet.levenshtein.AttributeWrapper;
+import de.tum.cit.aet.levenshtein.ClassWrapper;
+import de.tum.cit.aet.levenshtein.ConstructorWrapper;
+import de.tum.cit.aet.levenshtein.MethodWrapper;
+
 
 public class HundWrapper<T> extends ClassWrapper<T>
 {

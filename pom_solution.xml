@@ -3,16 +3,29 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>b2j</groupId>
-  <artifactId>TestsSolution</artifactId>
-  <version>1.0</version>
-  <name>Tests - Solution</name>
+  <artifactId>tests</artifactId>
+  <version>1.0.0</version>
+  <name>Tests - Assignment</name>
   <repositories>
-  <repository>
-    <id>github</id>
-    <name>GitHub Packages</name>
-    <url>https://maven.pkg.github.com/ValentinHerrmann/Artemis-Testing-Patterns</url>
-  </repository>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/ValentinHerrmann/Artemis-Testing-Patterns</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
   </repositories>
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/Blockly2Java/Gassi_tests</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </distributionManagement>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <argLine>-Dfile.encoding=UTF-8</argLine>
@@ -26,26 +39,8 @@
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
+      <artifactId>junit-jupiter</artifactId>
       <version>5.10.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.10.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>5.10.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-engine</artifactId>
-      <version>1.10.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -55,19 +50,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-    <groupId>de.tum.in.ase</groupId>
-    <artifactId>artemis-java-test-sandbox</artifactId>
-    <version>1.15.0</version>
-    <scope>test</scope>
-  </dependency>
-  <dependency>
-    <groupId>de.tum.cit.aet</groupId>
-    <artifactId>levenshtein-name-deviation-pattern</artifactId>
-    <version>[1.0.0,)</version>
-  </dependency>
+      <groupId>de.tum.in.ase</groupId>
+      <artifactId>artemis-java-test-sandbox</artifactId>
+      <version>1.15.0</version>
+    </dependency>
+    <dependency>
+      <groupId>de.tum.cit.aet</groupId>
+      <artifactId>levenshtein-name-deviation-pattern</artifactId>
+      <version>[1.0.0,)</version>
+    </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>${project.basedir}/../solution/src</sourceDirectory>
+    <sourceDirectory>${project.basedir}/../template/src</sourceDirectory>
     <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
     <testResources>
       <testResource>
@@ -75,25 +69,6 @@
       </testResource>
     </testResources>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.6.0</version>
-        <executions>
-          <execution>
-            <id>add-aux-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.basedir}/../aux</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.2.1</version>
@@ -143,36 +118,16 @@
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.2.5</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.4.2</version>
         <configuration>
-          <testFailureIgnore>true</testFailureIgnore>
-          <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
-          <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-          </statelessTestsetReporter>
+          <!-- Package compiled tests/resources as the main artifact. -->
+          <classesDirectory>${project.build.testOutputDirectory}</classesDirectory>
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>normalize-structural-testcase-names</id>
-            <phase>test</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <replaceregexp byline="false" flags="g"
-                  match="name=&quot;strukturTests\(String\)\s+"
-                  replace="name=&quot;">
-                  <fileset dir="${project.build.directory}/surefire-reports" includes="TEST-*.xml"/>
-                </replaceregexp>
-              </target>
-            </configuration>
-          </execution>
-        </executions>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
       </plugin>
     </plugins>
   </build>

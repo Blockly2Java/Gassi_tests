@@ -9,9 +9,11 @@ import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
-import levenshtein.LevenshteinTest;
-import static levenshtein.StructuralLevenshtein.DetailLevel.ONE_PER_MEMBER_CATEGORY;
-import static levenshtein.StructuralLevenshtein.structuralTestFactory;
+import de.tum.cit.aet.levenshtein.ClassWrapper;
+import static de.tum.cit.aet.levenshtein.StructuralLevenshtein.DetailLevel.ONE_PER_MEMBER_CATEGORY;
+import de.tum.cit.aet.levenshtein.LevenshteinTest;
+import de.tum.cit.aet.levenshtein.StructuralLevenshtein;
+import static de.tum.cit.aet.levenshtein.StructuralLevenshtein.structuralTestFactory;
 import wrappers.HundWrapper;
 import wrappers.MainWrapper;
 import wrappers.MenschWrapper;
@@ -38,8 +40,8 @@ public class TestManager {
     
     @TestFactory
     List<DynamicTest> strukturTests() {
-        return structuralTestFactory(
-            ONE_PER_MEMBER_CATEGORY,
+        return StructuralLevenshtein.structuralTestFactory(
+            StructuralLevenshtein.DetailLevel.ONE_PER_MEMBER_CATEGORY,
             Tests.main, Tests.hund, Tests.mensch
         );
     }

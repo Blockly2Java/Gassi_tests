@@ -1,6 +1,9 @@
 package wrappers;
 
-import levenshtein.*;
+import de.tum.cit.aet.levenshtein.AttributeWrapper;
+import de.tum.cit.aet.levenshtein.ClassWrapper;
+import de.tum.cit.aet.levenshtein.ConstructorWrapper;
+import de.tum.cit.aet.levenshtein.MethodWrapper;
 
 public class ShapeWrapper<T> extends ClassWrapper<T> {
 	private final ConstructorWrapper<T> constructor;
