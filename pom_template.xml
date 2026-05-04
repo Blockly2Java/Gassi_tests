@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>b2j</groupId>
-  <artifactId>tests</artifactId>
+  <artifactId>gassi</artifactId>
   <version>1.0.0</version>
   <name>Tests - Assignment</name>
   <repositories>
@@ -61,7 +61,7 @@
     </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>${project.basedir}/../solution/src</sourceDirectory>
+    <sourceDirectory>${project.basedir}/../template/src</sourceDirectory>
     <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
     <testResources>
       <testResource>
@@ -69,6 +69,25 @@
       </testResource>
     </testResources>
     <plugins>
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <id>add-aux-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.basedir}/../aux</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.2.1</version>
