@@ -70,7 +70,7 @@ public class TestManager {
     @Test
     void testGassiGehen() {
         try {
-            fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
+            //fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
             Tests.testGassiGehen();
         }
         catch (AssertionError e) {
@@ -83,7 +83,7 @@ public class TestManager {
     @Test
     void testHundRufen() {
         try {
-            fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
+            //fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
             Tests.testHundRufen();
         }
         catch (AssertionError e) {
@@ -96,7 +96,7 @@ public class TestManager {
     @Test
     void testBeiFuss() {
         try {
-            fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
+            //fail("Dieser Teil kann noch nicht automatisch überprüft werden.");
             Tests.testBeiFuss();
         }
         catch (AssertionError e) {
