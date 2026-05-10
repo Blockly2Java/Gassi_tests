@@ -59,6 +59,11 @@
       <artifactId>levenshtein-name-deviation-pattern</artifactId>
       <version>[1.0.0,)</version>
     </dependency>
+    <dependency>
+      <groupId>b2j</groupId>
+      <artifactId>graphics</artifactId>
+      <version>[0.1.0,)</version>
+    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>${project.basedir}/assignment/src</sourceDirectory>
