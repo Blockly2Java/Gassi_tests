@@ -6,16 +6,6 @@
   <artifactId>gassi</artifactId>
   <version>1.0.0</version>
   <name>Tests - Assignment</name>
-  <repositories>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/ValentinHerrmann/Artemis-Testing-Patterns</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
   <distributionManagement>
     <repository>
       <id>github</id>
@@ -28,8 +18,23 @@
   </distributionManagement>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <argLine>-Dfile.encoding=UTF-8</argLine>
+    <argLine>-Dfile.encoding=UTF-8</argLine><!-- Default to assignment -->
+    <exercise.src.dir>${project.basedir}/assignment/src</exercise.src.dir>
   </properties>
+  <profiles>
+    <profile>
+        <id>template</id>
+        <properties>
+            <exercise.src.dir>${project.basedir}/../template/src</exercise.src.dir>
+        </properties>
+    </profile>
+    <profile>
+        <id>solution</id>
+        <properties>
+            <exercise.src.dir>${project.basedir}/../solution/src</exercise.src.dir>
+        </properties>
+    </profile>
+  </profiles>
   <dependencies>
     <dependency>
       <groupId>org.assertj</groupId>
@@ -55,18 +60,18 @@
       <version>1.15.0</version>
     </dependency>
     <dependency>
-      <groupId>de.tum.cit.aet</groupId>
-      <artifactId>levenshtein-name-deviation-pattern</artifactId>
+      <groupId>io.github.valentinherrmann</groupId>
+      <artifactId>levenshtein-testing-framework</artifactId>
       <version>[1.0.0,)</version>
     </dependency>
     <dependency>
-      <groupId>b2j</groupId>
+      <groupId>de.blockly2java</groupId>
       <artifactId>graphics</artifactId>
       <version>[0.1.0,)</version>
     </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>${project.basedir}/assignment/src</sourceDirectory>
+    <sourceDirectory>${exercise.src.dir}</sourceDirectory>
     <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
     <testResources>
       <testResource>

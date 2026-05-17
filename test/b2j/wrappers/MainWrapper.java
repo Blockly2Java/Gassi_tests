@@ -1,7 +1,7 @@
 package b2j.wrappers;
 
-import de.tum.cit.aet.levenshtein.ClassWrapper;
-import de.tum.cit.aet.levenshtein.MethodWrapper;
+import io.github.valentinherrmann.levenshtein.ClassWrapper;
+import io.github.valentinherrmann.levenshtein.MethodWrapper;
 
 public class MainWrapper<T> extends ClassWrapper<T>
 {

@@ -1,9 +1,9 @@
 package b2j.wrappers;
 
-import de.tum.cit.aet.levenshtein.AttributeWrapper;
-import de.tum.cit.aet.levenshtein.ClassWrapper;
-import de.tum.cit.aet.levenshtein.ConstructorWrapper;
-import de.tum.cit.aet.levenshtein.MethodWrapper;
+import io.github.valentinherrmann.levenshtein.AttributeWrapper;
+import io.github.valentinherrmann.levenshtein.ClassWrapper;
+import io.github.valentinherrmann.levenshtein.ConstructorWrapper;
+import io.github.valentinherrmann.levenshtein.MethodWrapper;
 
 public class MenschWrapper<T> extends ClassWrapper<T>
 {

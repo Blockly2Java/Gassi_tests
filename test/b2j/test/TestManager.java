@@ -12,8 +12,8 @@ import org.junit.jupiter.api.TestFactory;
 import b2j.wrappers.HundWrapper;
 import b2j.wrappers.MainWrapper;
 import b2j.wrappers.MenschWrapper;
-import de.tum.cit.aet.levenshtein.LevenshteinTest;
-import de.tum.cit.aet.levenshtein.StructuralLevenshtein;
+import io.github.valentinherrmann.levenshtein.LevenshteinTest;
+import io.github.valentinherrmann.levenshtein.StructuralLevenshtein;
 
 
 
