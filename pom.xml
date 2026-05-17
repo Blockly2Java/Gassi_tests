@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>b2j</groupId>
   <artifactId>gassi</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>Tests - Assignment</name>
   <distributionManagement>
     <repository>
