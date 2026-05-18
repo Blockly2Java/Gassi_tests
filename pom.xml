@@ -1,23 +1,47 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>b2j</groupId>
-  <artifactId>gassi</artifactId>
-  <version>1.0.1</version>
-  <name>Tests - Assignment</name>
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/Blockly2Java/Gassi_tests</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </distributionManagement>
+
+  <!-- MODIFY FOR YOUR EXERCISE -->
+  <groupId>de.blockly2java.exercises</groupId>
+  <artifactId>gassi_tests</artifactId>
+
+  <name>Blockly2Java Exercise 'Gassi' Tests</name>
+  <description>Contains test cases for the Gassi exercise</description>
+  <url>https://github.com/Blockly2Java/Gassi_tests</url>
+  <scm>
+      <connection>scm:git:git://github.com/Blockly2Java/Gassi_tests.git</connection>
+      <developerConnection>scm:git:ssh://github.com:Blockly2Java/Gassi_tests.git</developerConnection>
+      <url>https://github.com/Blockly2Java/Gassi_tests</url>
+  </scm>
+  <!-- /MODIFY FOR YOUR EXERCISE -->
+
+  <version>1.0.0-SNAPSHOT</version> <!-- Version modified via Github Workflow --> 
+  <packaging>jar</packaging>
+  <licenses>
+    <license>
+      <name>CC BY 4.0</name>
+      <url>https://creativecommons.org/licenses/by/4.0/</url>
+    </license>
+  </licenses>
+
+  <developers>
+      <developer>
+          <id>ValentinHerrmann</id>
+          <name>Valentin Herrmann</name>
+          <email>mail@valentin-herrmann.com</email>
+      </developer>
+  </developers>
+
+
   <properties>
+    <maven.compiler.source>25</maven.compiler.source>
+    <maven.compiler.target>25</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javafx.version>26</javafx.version>
+    <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
     <argLine>-Dfile.encoding=UTF-8</argLine><!-- Default to assignment -->
     <exercise.src.dir>${project.basedir}/assignment/src</exercise.src.dir>
   </properties>
@@ -120,6 +144,7 @@
         </configuration>
       </plugin>
       <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
@@ -139,6 +164,85 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
       </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.9.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
+
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Generates Javadoc Jars -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Signs the artifacts with GPG -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Use GPG_PASSPHRASE environment variable -->
+                            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+                            <!-- Prevent gpg from using pinentry programs -->
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Automates deployment to Sonatype and releases to Maven Central -->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.13</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl> <!-- Note: Newer accounts use s01 -->
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
     </plugins>
   </build>
 </project>
